@@ -1,10 +1,15 @@
 import { SContainer } from "../../styles/SharedStyles";
-
+import { SHeader, SLogo } from "./Header.styled";
+import logo from "./../../assets/logo.svg";
 const Header = () => {
   return (
-    <header>
-      <SContainer> Header</SContainer>
-    </header>
+    <SHeader>
+      <SContainer>
+        <SLogo>
+          <img src={logo} alt="Redberry logo" />
+        </SLogo>
+      </SContainer>
+    </SHeader>
   );
 };
 
