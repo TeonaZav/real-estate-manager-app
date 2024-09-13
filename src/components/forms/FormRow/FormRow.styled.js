@@ -23,7 +23,6 @@ export const SMessage = styled(motion.span)`
 export const SLabel = styled.label`
   font-size: var(--fs-xs);
   font-weight: 500;
-  margin-top: ${({ marginTop }) => (marginTop ? marginTop : "")};
-  color: ${({ $open }) => ($open ? "var(--clr-white)" : "var(--clr-disabled)")};
+  margin-bottom: 0.5rem;
   transition: all 0.3s ease-in;
 `;

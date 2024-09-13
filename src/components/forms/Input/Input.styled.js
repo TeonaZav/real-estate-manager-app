@@ -11,13 +11,11 @@ export const SInput = styled.input`
   outline: none;
   font-size: 1.6rem;
   ${(props) =>
-    props.$error &&
-    css`
-      border: 1px solid var(--clr-error);
-    `}
-  ${(props) =>
-    props.$success &&
-    css`
-      border: 1px solid var(--clr-success);
-    `}
+    props.$error
+      ? css`
+          border: 1px solid var(--clr-error);
+        `
+      : css`
+          border: 1px solid var(--clr-secondary);
+        `}
 `;

@@ -7,7 +7,7 @@ const FormRow = ({
   label,
   children,
   fieldName,
-  hintMessage,
+  hintMessage = "",
   variant = "input",
 }) => {
   const {
@@ -29,7 +29,7 @@ const FormRow = ({
         $hasError={hasError}
         $isSuccess={isSuccess}
       >
-        {variant !== "select" && (
+        {message && (
           <>
             <CheckSvg /> {message}
           </>
