@@ -6,12 +6,12 @@ const Input = ({ type = "text", fieldName }) => {
     register,
     formState: { errors, dirtyFields },
   } = useFormContext();
+
   const fieldError = errors?.[fieldName]; 
   const hasError = !!errors?.[fieldName]; 
-
   const isDirty = !!dirtyFields[fieldName]; 
   const isSuccess = isDirty && !hasError; 
-  
+
   return (
     <SInput
       type={type}

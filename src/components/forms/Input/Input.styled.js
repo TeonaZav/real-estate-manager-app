@@ -7,8 +7,9 @@ export const SInput = styled.input`
   border-radius: 0.6rem;
   padding: 1.15rem 1rem;
   height: 4.2rem;
+  color: var(--clr-text-primary);
   outline: none;
-
+  font-size: 1.6rem;
   ${(props) =>
     props.$error &&
     css`
