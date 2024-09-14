@@ -1,13 +1,40 @@
 import { useFormContext, Controller } from "react-hook-form";
-import { SSelect } from "./SelectField.styled";
+import { components } from "react-select";
 
-const SelectField = ({ options, fieldName }) => {
+import { useModal } from "../../../context/ModalContext";
+import CustomMenuList from "./CustomMenuList";
+import { SSelect } from "./Select.styled";
+import DropdownIcon from "./../../../assets/icon-down.svg";
+
+const CustomDropdownIndicator = (props) => {
+  return (
+    <components.DropdownIndicator {...props}>
+      <DropdownIcon />
+    </components.DropdownIndicator>
+  );
+};
+
+const SelectField = ({
+  options,
+  fieldName,
+  useCustomMenu = false,
+  customModalContent,
+}) => {
   const {
     control,
     formState: { errors },
   } = useFormContext();
+  const { openModal, closeModal } = useModal();
+
+
+  const handleOpenModal = () => {
+    if (customModalContent) {
+      openModal(customModalContent({ onClose: closeModal }));
+    }
+  };
 
   const hasError = errors?.[fieldName];
+
   return (
     <Controller
       name={fieldName}
@@ -19,6 +46,14 @@ const SelectField = ({ options, fieldName }) => {
           value={options.find((option) => option.value === value) || null}
           onChange={(selectedOption) => onChange(selectedOption.value)}
           $hasError={hasError}
+          components={{
+            DropdownIndicator: CustomDropdownIndicator,
+            ...(useCustomMenu && {
+              MenuList: (props) => (
+                <CustomMenuList onOpen={handleOpenModal} {...props} />
+              ),
+            }),
+          }}
           placeholder=""
         />
       )}
