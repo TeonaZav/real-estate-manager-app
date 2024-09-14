@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GlobalStyle } from "./styles/GlobalStyles.js";
+import { ModalProvider } from "./context/ModalContext.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,8 +26,10 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
-        <GlobalStyle />
-        <App />
+        <ModalProvider>
+          <GlobalStyle />
+          <App />
+        </ModalProvider>
       </ChakraProvider>
     </QueryClientProvider>
   </StrictMode>
