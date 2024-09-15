@@ -21,7 +21,9 @@ export const validationSchema = Yup.object().shape({
       return (
         value &&
         (typeof value === "string" ||
-          ["image/jpeg", "image/png", "image/gif"].includes(value.type))
+          ["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(
+            value.type
+          ))
       );
     }),
   phone: Yup.string()
