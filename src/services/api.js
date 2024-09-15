@@ -43,3 +43,21 @@ export const fetchAgents = async () => {
     console.error("Failed to fetch agents", error);
   }
 };
+
+export const fetchRegions = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/regions`);
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch regions", error);
+  }
+};
+
+export const fetchCities = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/cities`);
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch cities", error);
+  }
+};
