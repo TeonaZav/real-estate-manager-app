@@ -18,11 +18,14 @@ export const SImageWrapper = styled.figure`
   width: 9.2rem;
   height: 8.2rem;
   border-radius: 0.4rem;
-  overflow: hidden;
+  position: relative;
+ 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 0.4rem;
+    overflow: hidden;
   }
 `;
 
@@ -36,4 +39,17 @@ export const SImageInput = styled.input`
   cursor: pointer;
 `;
 
-
+export const SDeleteButton = styled.button`
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: var(--clr-white);
+  border: 1px solid var(--clr-dark);
+  border-radius: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -0.5rem;
+  right: -0.5rem;
+  cursor: pointer;
+`;

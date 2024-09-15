@@ -1,44 +1,73 @@
-import { useFormContext } from "react-hook-form";
+import { useState, useEffect, useRef } from "react";
 import {
   SImageUploadWrapper,
   SImageInput,
   SImageWrapper,
+  SDeleteButton,
 } from "./ImageUpload.styled";
-import PlusCircleIcon from "./../../../assets/plus-circle-icon.svg";
-import { base64Image } from "../../../utils/helpers";
+import { PlusCircleIcon, DeleteIcon } from "../../../assets";
+import {
+  dataURLtoFile,
+  persistFormDataToSession,
+} from "../../../utils/formUtils";
 
-const ImageUpload = ({ fieldName }) => {
-  const { setValue, setError, watch, clearErrors } = useFormContext();
+const ImageUpload = ({ fieldName, onChange, value, storageKey }) => {
+  const [fileUrl, setFileUrl] = useState(null);
+  const fileInputRef = useRef(null);
+
+  const handleFileProcessing = (file) => {
+    if (file.size > 1048576) {
+      return console.error("ფაილის ზომა არ უნდა აღემატებოდეს 1mb-ს");
+    }
+
+    const objectUrl = URL.createObjectURL(file);
+    setFileUrl(objectUrl);
+    onChange(file);
+
+    persistFormDataToSession({ [fieldName]: file }, storageKey, fieldName);
+  };
+
+  useEffect(() => {
+    const storedData = JSON.parse(sessionStorage.getItem(storageKey) || "{}");
+    const storedImage = storedData[fieldName];
+    if (storedImage) {
+      const file = dataURLtoFile(storedImage, "avatar-upload.jpg");
+      file && handleFileProcessing(file);
+    }
+  }, [storageKey, fieldName]);
 
   const onFileChange = (e) => {
     const file = e.target.files[0];
-    if (file && file.size <= 1048576) {
-      base64Image(file, (base64) => {
-        setValue(fieldName, base64);
-      });
-      clearErrors(fieldName);
-    } else {
-      setError(fieldName, {
-        type: "manual",
-        message: "სურათის ზომა არ უნდა აღებმატებოდეს 1mb-ს",
-      });
-    }
+    file && handleFileProcessing(file);
   };
 
-  const userImage = watch(fieldName);
+  const handleRemoveImage = () => {
+    onChange(null);
+    const sessionData = JSON.parse(sessionStorage.getItem(storageKey)) || {};
+    delete sessionData[fieldName];
+    sessionStorage.setItem(storageKey, JSON.stringify(sessionData));
+
+    setFileUrl(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
 
   return (
     <SImageUploadWrapper>
       <SImageInput
+        ref={fileInputRef}
         id={fieldName}
         type="file"
         accept="image/*"
         onChange={onFileChange}
       />
-
-      {userImage ? (
+      {fileUrl ? (
         <SImageWrapper>
-          <img src={`data:image/png;base64,${userImage}`} alt="Uploadedimage" />
+          <img src={fileUrl} alt="Uploaded image" />
+          <SDeleteButton onClick={handleRemoveImage}>
+            <DeleteIcon />
+          </SDeleteButton>
         </SImageWrapper>
       ) : (
         <PlusCircleIcon />
