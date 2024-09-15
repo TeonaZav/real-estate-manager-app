@@ -30,3 +30,16 @@ export const addNewAgent = async (formData) => {
     console.error("Failed to create new agent", error);
   }
 };
+
+export const fetchAgents = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/agents`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch agents", error);
+  }
+};

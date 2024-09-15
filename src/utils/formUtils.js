@@ -57,15 +57,24 @@ export const persistFormDataToSession = (
   storageKey,
   fileFieldKey = "avatar"
 ) => {
-  const sessionData = JSON.parse(sessionStorage.getItem(storageKey)) || {}; 
+  const sessionData = JSON.parse(sessionStorage.getItem(storageKey)) || {};
 
   if (values[fileFieldKey] instanceof File) {
     base64Image(values[fileFieldKey], (base64) => {
-      const updatedData = { ...sessionData, ...values, [fileFieldKey]: base64 }; 
+      const updatedData = { ...sessionData, ...values, [fileFieldKey]: base64 };
       sessionStorage.setItem(storageKey, JSON.stringify(updatedData));
     });
   } else {
-    const updatedData = { ...sessionData, ...values }; 
+    const updatedData = { ...sessionData, ...values };
     sessionStorage.setItem(storageKey, JSON.stringify(updatedData));
   }
+};
+
+export const convertAgentOptions = (data) => {
+  if (!data) return;
+
+  return data.map((el) => ({
+    value: el.id,
+    label: `${el.name} ${el.surname}`,
+  }));
 };
