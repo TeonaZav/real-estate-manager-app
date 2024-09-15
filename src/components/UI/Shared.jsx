@@ -1,5 +1,18 @@
 import styled, { css } from "styled-components";
 
+export const Heading = styled.h2`
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  color: var(--clr-text-primary);
+`;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
 export const Button = styled.button`
   padding: 1.4rem 1.6rem;
   border-radius: 1rem;
