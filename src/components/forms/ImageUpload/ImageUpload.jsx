@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useFormContext } from "react-hook-form";
 import {
   SImageUploadWrapper,
   SImageInput,
@@ -11,13 +12,21 @@ import {
   persistFormDataToSession,
 } from "../../../utils/formUtils";
 
-const ImageUpload = ({ fieldName, onChange, value, storageKey }) => {
+const ImageUpload = ({ fieldName, onChange, storageKey }) => {
   const [fileUrl, setFileUrl] = useState(null);
   const fileInputRef = useRef(null);
+  const {
+    formState: { errors },
+    setError,
+  } = useFormContext();
 
   const handleFileProcessing = (file) => {
     if (file.size > 1048576) {
-      return console.error("ფაილის ზომა არ უნდა აღემატებოდეს 1mb-ს");
+      setError(fieldName, {
+        type: "manual",
+        message: "ფაილის ზომა არ უნდა აღემატებოდეს 1mb-ს",
+      });
+      return;
     }
 
     const objectUrl = URL.createObjectURL(file);
@@ -54,7 +63,7 @@ const ImageUpload = ({ fieldName, onChange, value, storageKey }) => {
   };
 
   return (
-    <SImageUploadWrapper>
+    <SImageUploadWrapper $hasError={errors?.[fieldName]}>
       <SImageInput
         ref={fileInputRef}
         id={fieldName}

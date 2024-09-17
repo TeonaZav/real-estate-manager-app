@@ -12,6 +12,10 @@ export const SImageUploadWrapper = styled.div`
   cursor: pointer;
   position: relative;
   background-color: var(--clr-bg-primary);
+
+  border: 1px dashed
+    ${({ $hasError }) =>
+      $hasError ? "var(--clr-error)" : "var(--clr-text-primary)"};
 `;
 
 export const SImageWrapper = styled.figure`
@@ -19,7 +23,7 @@ export const SImageWrapper = styled.figure`
   height: 8.2rem;
   border-radius: 0.4rem;
   position: relative;
- 
+
   img {
     width: 100%;
     height: 100%;
