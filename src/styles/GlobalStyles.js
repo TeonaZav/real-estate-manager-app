@@ -5,22 +5,23 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     /* Colors */
     --clr-green: #45A849;
-    --clr-red: #F93B1D
+    --clr-red: #F93B1D;
     --clr-blue-grey:#2D3648;
     --clr-white: #ffffff;
     --clr-dark: #021526;
-
+    --clr-secondary: #808A93;
     --clr-bg-primary: #ffffff;
 
     --clr-text-primary: #021526;
     --clr-text-secondary: #808A93;
     --clr-text-secondary-dark: #676E76;
 
-    --clr-error: #F93B1D
+    --clr-error: #F93B1D;
     --clr-success: #45A849;
     --clr-btn-primary:#F93B1D;
     --clr-btn-primary-hover: #DF3014;
     --clr-btn-secondary:#808A93;
+    --clr-btn-secondary-hover:#808A93
     --clr-btn-primary-hover: #DF3014;
 
 
@@ -37,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
     --fs-label: 1.4rem;
     --fs-input: 1.4rem;
     --fs-hint: 1.4rem;
-
+    --clr-tranparent: #0000000;
     /* Borders */
     --border: 1px solid #DBDBDB; 
   }
@@ -61,7 +62,7 @@ export const GlobalStyle = createGlobalStyle`
   src: url("/fonts/FiraGO-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -69,7 +70,7 @@ export const GlobalStyle = createGlobalStyle`
   src: url("/fonts/FiraGO-Medium.woff") format("opentype");
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -77,9 +78,18 @@ export const GlobalStyle = createGlobalStyle`
   src: url("/fonts/FiraGO-Bold.woff2") format("opentype");
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
   
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('/fonts/HelveticaNeue-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
   ul, ol{
     list-style-type: none;
   }
@@ -107,5 +117,5 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
-  input, select, textarea, button{font-family:inherit;}
+  input, select, textarea, button{ font-family: 'FiraGO', 'Helvetica Neue', Arial, sans-serif;}
 `;

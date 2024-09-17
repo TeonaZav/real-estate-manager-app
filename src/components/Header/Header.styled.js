@@ -6,7 +6,9 @@ export const SHeader = styled.header`
   position: fixed;
   height: 10rem;
   border-bottom: var(--border);
-
+  background-color: var(--clr-bg-primary);
+  z-index: 100;
+  
   ${SContainer} {
     display: flex;
     justify-content: space-between;

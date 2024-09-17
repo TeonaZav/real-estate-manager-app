@@ -1,9 +1,7 @@
-import React from 'react'
+import ListingForm from "../components/forms/ListingForm/ListingForm";
 
 const AddListing = () => {
-  return (
-    <div>AddListing</div>
-  )
-}
+  return <ListingForm />;
+};
 
-export default AddListing
+export default AddListing;
