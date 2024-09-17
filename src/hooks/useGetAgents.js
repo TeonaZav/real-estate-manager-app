@@ -3,12 +3,12 @@ import { fetchAgents } from "../services/api";
 import { convertAgentOptions } from "../utils/formUtils";
 
 export const useGetAgents = () => {
-  const { isLoading, data, error } = useQuery({
+  const { data, error } = useQuery({
     queryKey: ["agents"],
     queryFn: fetchAgents,
+    suspense: true, 
   });
 
-  const agents = !isLoading && data ? convertAgentOptions(data) : [];
-
-  return { isLoading, error, agents };
+  const agents = data ? convertAgentOptions(data) : [];
+  return { agents, error };
 };

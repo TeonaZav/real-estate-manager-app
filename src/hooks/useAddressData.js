@@ -2,37 +2,28 @@ import { useQueries } from "@tanstack/react-query";
 import { fetchCities, fetchRegions } from "../services/api";
 import { convertSelectOptions } from "../utils/formUtils";
 
-export const useAddressData = (region_id) => {
+export const useAddressData = () => {
   const [citiesQuery, regionsQuery] = useQueries({
     queries: [
       {
-        queryKey: ["cities", region_id],
+        queryKey: ["cities"],
         queryFn: fetchCities,
-        enabled: !!region_id,
+        suspense: true,
       },
       {
         queryKey: ["regions"],
         queryFn: fetchRegions,
+        suspense: true,
       },
     ],
   });
 
-  const isLoading = citiesQuery.isLoading || regionsQuery.isLoading;
-  const error = citiesQuery.error || regionsQuery.error;
-
-  const citiesData =
-    citiesQuery.isSuccess && region_id
-      ? citiesQuery.data.filter((city) => city.region_id === region_id)
-      : [];
-  const cities = convertSelectOptions(citiesData);
-
+  const cities = citiesQuery.isSuccess ? citiesQuery.data : [];
   const regions = regionsQuery.isSuccess
     ? convertSelectOptions(regionsQuery.data)
     : [];
 
   return {
-    isLoading,
-    error,
     cities,
     regions,
   };
