@@ -2,7 +2,8 @@ import { SRadioWrapper, SRadioLabel, SRadio } from "./RadioGroup.styled";
 import { useFormContext } from "react-hook-form";
 
 const RadioGroup = ({ fieldName, options }) => {
-  const { register } = useFormContext();
+  const { register, watch } = useFormContext();
+  const selectedValue = watch(fieldName);
 
   return (
     <SRadioWrapper>
@@ -12,7 +13,8 @@ const RadioGroup = ({ fieldName, options }) => {
             type="radio"
             value={option.value}
             {...register(fieldName)}
-            defaultChecked={option.defaultChecked}
+            checked={selectedValue === option.value}
+        
           />
           {option.label}
         </SRadioLabel>

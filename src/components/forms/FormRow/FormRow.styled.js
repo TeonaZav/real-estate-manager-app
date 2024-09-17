@@ -12,10 +12,10 @@ export const SMessage = styled(motion.span)`
   gap: 0.7rem;
   font-size: var(--fs-xs);
   color: var(--clr-text-primary);
-  color: ${({ $hasError, $isSuccess }) =>
+  color: ${({ $hasError, $isValid}) =>
     $hasError
       ? "var(--clr-error)"
-      : $isSuccess
+      : $isValid
       ? "var(--clr-success)"
       : "var(--clr-text-primary)"};
 `;
@@ -25,4 +25,9 @@ export const SLabel = styled.label`
   font-weight: 500;
   margin-bottom: 0.5rem;
   transition: all 0.3s ease-in;
+  span {
+    font-size: 1.8rem;
+    vertical-align: middle;
+    margin-left: 0.2rem;
+  }
 `;

@@ -78,3 +78,12 @@ export const convertAgentOptions = (data) => {
     label: `${el.name} ${el.surname}`,
   }));
 };
+
+export const convertSelectOptions = (data) => {
+  if (!data) return;
+
+  return data.map((el) => ({
+    value: el.id,
+    label: el.name,
+  }));
+};
