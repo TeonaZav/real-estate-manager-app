@@ -5,10 +5,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useCreateAgent } from "../../../hooks/useCreateAgent";
 import { validationSchema } from "./validationSchema";
+import FormActions from "../FormActions/FormActions";
 import { FormRow, Input, ImageUpload } from "../index";
 import { SFormWrapper, SForm } from "./AgentForm.styled";
 import { SFieldsGrid } from "../formShared.style";
-import { Heading, ButtonGroup, Button } from "../../UI/Shared";
+import { Heading } from "../../UI/Shared";
+
 import {
   getSessionData,
   persistFormDataToSession,
@@ -129,19 +131,7 @@ const AgentForm = ({ onClose }) => {
               )}
             />
           </FormRow>
-          <ButtonGroup>
-            <Button
-              type="button"
-              $variant="outline"
-              $colorType="primary"
-              onClick={handleCancel}
-            >
-              გაუქმება
-            </Button>
-            <Button $variant="solid" $colorType="primary" type="submit">
-              დაამატე აგენტი
-            </Button>
-          </ButtonGroup>
+          <FormActions submitLabel="დაამატე აგენტი" onCancel={handleCancel} />
         </SForm>
       </FormProvider>
       <DevTool control={control} />
