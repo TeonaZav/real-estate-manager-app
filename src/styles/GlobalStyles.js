@@ -38,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
     --fs-label: 1.4rem;
     --fs-input: 1.4rem;
     --fs-hint: 1.4rem;
---clr-tranparent: #00000009;
+    --clr-tranparent: #0000000;
     /* Borders */
     --border: 1px solid #DBDBDB; 
   }
@@ -62,7 +62,6 @@ export const GlobalStyle = createGlobalStyle`
   src: url("/fonts/FiraGO-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
-  /* font-display: swap; */
   font-display: block;
 }
 
@@ -71,7 +70,6 @@ export const GlobalStyle = createGlobalStyle`
   src: url("/fonts/FiraGO-Medium.woff") format("opentype");
   font-weight: 500;
   font-style: normal;
-  /* font-display: swap; */
   font-display: block;
 }
 
@@ -80,7 +78,6 @@ export const GlobalStyle = createGlobalStyle`
   src: url("/fonts/FiraGO-Bold.woff2") format("opentype");
   font-weight: 700;
   font-style: normal;
-  /* font-display: swap; */
   font-display: block;
 }
   

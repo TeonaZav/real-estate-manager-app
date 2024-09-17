@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Heading, ButtonGroup } from "../../UI/Shared";
+import { SFieldsGrid } from "../formShared.style";
+
 
 export const SFormWrapper = styled.div`
   padding-block: 8.7rem;
@@ -15,9 +17,10 @@ export const SForm = styled.form`
   width: 95%;
   margin: 0 auto;
 
-  &:not(:last-child) {
-    gap: 2.8rem;
+  ${SFieldsGrid} {
+    margin-bottom: 2.8rem;
   }
+
   ${ButtonGroup} {
     margin-top: 9.4rem;
   }
