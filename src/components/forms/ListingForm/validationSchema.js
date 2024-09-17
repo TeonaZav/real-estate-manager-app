@@ -1,10 +1,7 @@
 import * as Yup from "yup";
 
 export const validationSchema = Yup.object().shape({
-  address: Yup.string()
-    .required("სავალდებულო")
-    .min(2, "მინიმუმ ორი სიმბოლო")
-    .matches(/^(?!\d+$)/, "ჩაწერეთ ვალიდური მონაცემები"),
+  address: Yup.string().required("სავალდებულო").min(2, "მინიმუმ 2 სიმბოლო"),
 
   image: Yup.mixed()
     .required("სავალდებულო")
@@ -12,16 +9,13 @@ export const validationSchema = Yup.object().shape({
       return (
         value &&
         (typeof value === "string" ||
-          ["image/jpeg", "image/png", "image/gif"].includes(value.type))
+          ["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(
+            value.type
+          ))
       );
     }),
-  region_id: Yup.string()
-    .required("სავალდებულო")
-    .matches(/^[0-9]+$/, "ჩაწერეთ ვალიდური მონაცემები"),
-
-  city_id: Yup.string()
-    .required("სავალდებულო")
-    .matches(/^[0-9]+$/, "ჩაწერეთ ვალიდური მონაცემები"),
+  region_id: Yup.string().required("სავალდებულო"),
+  city_id: Yup.string().required("სავალდებულო"),
 
   description: Yup.string()
     .required("სავალდებულო")
@@ -34,20 +28,33 @@ export const validationSchema = Yup.object().shape({
 
   zip_code: Yup.string()
     .required("სავალდებულო")
-    .matches(/^[0-9]+$/, "ჩაწერეთ ვალიდური მონაცემები"),
+    .matches(/^[0-9]+$/, "მხოლოდ რიცხვები"),
 
-  price: Yup.number().typeError("მხოლოდ რიცხვები").required("სავალდებულო"),
+  price: Yup.number()
+    .nullable()
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === "" ? null : value
+    )
+    .required("სავალდებულო")
+    .typeError("მხოლოდ რიცხვები"),
 
-  area: Yup.number().typeError("მხოლოდ რიცხვები").required("სავალდებულო"),
+  area: Yup.number()
+    .nullable()
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === "" ? null : value
+    )
+    .required("სავალდებულო")
+    .typeError("მხოლოდ რიცხვები"),
 
   bedrooms: Yup.number()
+    .nullable()
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === "" ? null : value
+    )
     .required("სავალდებულო")
     .typeError("მხოლოდ რიცხვები")
-    .integer("ჩაწერეთ ვალიდური მონაცემები"),
+    .integer("ჩაწერეთ მთელი რიცხვი"),
 
   is_rental: Yup.number().required("სავალდებულო"),
-
-  agent_id: Yup.string()
-    .required("სავალდებულო")
-    .matches(/^[0-9]+$/, "ჩაწერეთ ვალიდური მონაცემები"),
+  agent_id: Yup.string().required("სავალდებულო"),
 });
