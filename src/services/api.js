@@ -61,3 +61,16 @@ export const fetchCities = async () => {
     console.error("Failed to fetch cities", error);
   }
 };
+
+export const fetchListing = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/real-estates`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch real estates", error);
+  }
+};

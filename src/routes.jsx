@@ -1,18 +1,43 @@
+import { Suspense, lazy } from "react";
+
 import {
   Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-
-import { Home, AddListing, Details } from "./pages";
 import { Layout } from "./components";
+
+const Home = lazy(() => import("./pages/Home"));
+const AddListing = lazy(() => import("./pages/AddListing"));
+const Details = lazy(() => import("./pages/Details"));
 
 const routes = createRoutesFromElements(
   <Route element={<Layout />}>
-    <Route path="/" element={<Home />} />
-    <Route path="add-listing" element={<AddListing />} />
-    <Route path="/:id" element={<Details />} />
+    <Route
+      path="/"
+      element={
+        <Suspense fallback={<div>Loading...</div>}>
+          <Home />
+        </Suspense>
+      }
+    />
+    <Route
+      path="add-listing"
+      element={
+        <Suspense fallback={<div>Loading...</div>}>
+          <AddListing />
+        </Suspense>
+      }
+    />
+    <Route
+      path=":id"
+      element={
+        <Suspense fallback={<div>Loading...</div>}>
+          <Details />
+        </Suspense>
+      }
+    />
   </Route>
 );
 
