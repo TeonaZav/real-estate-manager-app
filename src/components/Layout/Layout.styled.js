@@ -11,4 +11,5 @@ export const SMain = styled.main`
   background-color: var(--color-main-background);
   margin-top: 10rem;
   z-index: 10;
+  padding-top: 7.7rem;
 `;

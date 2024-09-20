@@ -9,12 +9,14 @@ export const GlobalStyle = createGlobalStyle`
     --clr-blue-grey:#2D3648;
     --clr-white: #ffffff;
     --clr-dark: #021526;
+    --clr-dark-op: 213, 97%, 9%;
     --clr-secondary: #808A93;
     --clr-bg-primary: #ffffff;
 
     --clr-text-primary: #021526;
     --clr-text-secondary: #808A93;
     --clr-text-secondary-dark: #676E76;
+    --clr-text-not-found: rgba(2, 21, 38, 0.80);
 
     --clr-error: #F93B1D;
     --clr-success: #45A849;
@@ -23,7 +25,6 @@ export const GlobalStyle = createGlobalStyle`
     --clr-btn-secondary:#808A93;
     --clr-btn-secondary-hover:#808A93
     --clr-btn-primary-hover: #DF3014;
-
 
     /* Font Sizes */
     --fs-xl: 4.8rem;
