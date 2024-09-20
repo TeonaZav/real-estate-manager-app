@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { Layout } from "./components";
+import { Layout, Loader } from "./components";
 
 const Home = lazy(() => import("./pages/Home"));
 const AddListing = lazy(() => import("./pages/AddListing"));
@@ -17,7 +17,7 @@ const routes = createRoutesFromElements(
     <Route
       path="/"
       element={
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Home />
         </Suspense>
       }
@@ -25,7 +25,7 @@ const routes = createRoutesFromElements(
     <Route
       path="add-listing"
       element={
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <AddListing />
         </Suspense>
       }
@@ -33,7 +33,7 @@ const routes = createRoutesFromElements(
     <Route
       path=":id"
       element={
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Details />
         </Suspense>
       }

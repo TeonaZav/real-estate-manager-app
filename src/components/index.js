@@ -4,6 +4,7 @@ import ListCard from "./listing/ListCard/ListCard";
 import MenuDropdown from "./MenuDropdown/MenuDropdown";
 import AgentForm from "./forms/AgentForm/AgentForm";
 import ListingForm from "./forms/ListingForm/ListingForm";
+import Loader from "./UI/Loader/Loader";
 
 export {
   Layout,
@@ -12,4 +13,5 @@ export {
   MenuDropdown,
   AgentForm,
   ListingForm,
+  Loader,
 };
