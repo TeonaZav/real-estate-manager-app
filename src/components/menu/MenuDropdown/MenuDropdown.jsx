@@ -2,8 +2,15 @@ import { Menu, MenuButton, MenuItem, ChakraProvider } from "@chakra-ui/react";
 import { chakraTheme } from "./../../../utils/theme";
 import { ChevronDownIcon, ChevronUpIcon } from "../../../assets";
 import { SMenuButton, SMenuList } from "./MenuDropdown.styled";
+import { Button } from "../../UI/Shared";
 
-const MenuDropdown = ({ label, children, ...props }) => {
+const MenuDropdown = ({
+  label,
+  btnLabel = "არჩევა",
+  children,
+  onClick,
+  ...props
+}) => {
   return (
     <ChakraProvider theme={chakraTheme}>
       <Menu>
@@ -18,11 +25,12 @@ const MenuDropdown = ({ label, children, ...props }) => {
               {label}
             </MenuButton>
             <SMenuList {...props}>
-              <MenuItem>Download</MenuItem>
-              <MenuItem onClick={() => alert("Kagebunshin")}>
-                Create a Copy
-              </MenuItem>
               {children}
+              {onClick && (
+                <Button $small onClick={onClick}>
+                  {btnLabel}
+                </Button>
+              )}
             </SMenuList>
           </>
         )}
