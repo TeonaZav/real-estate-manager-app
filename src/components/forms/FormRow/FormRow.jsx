@@ -2,7 +2,7 @@ import { useFormContext } from "react-hook-form";
 import { SFormRow, SMessage, SLabel } from "./FormRow.styled";
 import { fadeInAnimationContfig } from "../../../utils/animationConfig";
 import { isEmptyObject } from "../../../utils/helpers";
-import CheckSvg from "./../../../assets/check-icon.svg";
+import CheckSvg from "./../../../assets/icons/check-icon.svg";
 
 const FormRow = ({ label, children, fieldName, hintMessage = "" }) => {
   const {

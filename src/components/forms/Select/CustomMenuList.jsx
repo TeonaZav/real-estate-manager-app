@@ -1,6 +1,6 @@
 import { components } from "react-select";
 import { SButtonAdd } from "./Select.styled";
-import PlusCircleIcon from "./../../../assets/plus-circle-icon.svg";
+import PlusCircleIcon from "./../../../assets/icons/plus-circle-icon.svg";
 
 const CustomMenuList = ({ onOpen, ...props }) => {
   return (

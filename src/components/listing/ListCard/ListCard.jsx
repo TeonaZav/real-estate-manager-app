@@ -8,8 +8,8 @@ import {
   SInfoItem,
   STag,
 } from "./ListCard.styled";
-import { LocationIcon, BedIcon, AreaIcon, PostalIndexIcon } from "../../assets";
-import { formatPrice } from "../../utils/helpers";
+import { LocationIcon, BedIcon, AreaIcon, PostalIndexIcon } from "./../../../assets";
+import { formatPrice } from "./../../../utils/helpers";
 
 const InfoItem = ({ icon: Icon, label }) => (
   <SInfoItem>

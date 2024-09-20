@@ -1,8 +1,8 @@
 import { Menu, MenuButton, MenuItem, ChakraProvider } from "@chakra-ui/react";
-import { chakraTheme } from "./../../../utils/theme";
-import { ChevronDownIcon, ChevronUpIcon } from "../../../assets";
+import { chakraTheme } from "../../utils/theme";
+import { ChevronDownIcon, ChevronUpIcon } from "../../assets";
 import { SMenuButton, SMenuList } from "./MenuDropdown.styled";
-import { Button } from "../../UI/Shared";
+import { Button } from "../UI/Shared";
 
 const MenuDropdown = ({
   label,

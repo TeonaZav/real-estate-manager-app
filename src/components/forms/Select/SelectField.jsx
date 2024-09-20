@@ -4,7 +4,7 @@ import { components } from "react-select";
 import { useModal } from "../../../context/ModalContext";
 import CustomMenuList from "./CustomMenuList";
 import { SSelect } from "./Select.styled";
-import DropdownIcon from "./../../../assets/icon-down.svg";
+import DropdownIcon from "./../../../assets/icons/icon-down.svg";
 
 const CustomDropdownIndicator = (props) => {
   return (
@@ -25,7 +25,6 @@ const SelectField = ({
     formState: { errors },
   } = useFormContext();
   const { openModal, closeModal } = useModal();
-
 
   const handleOpenModal = () => {
     if (customModalContent) {

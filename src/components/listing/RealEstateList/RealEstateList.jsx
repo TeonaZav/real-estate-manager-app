@@ -1,11 +1,16 @@
 import { ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
-import { chakraTheme } from "../../utils/theme";
-import { useGetListing } from "../../hooks/useGetListing";
-import { ListCard } from "./../index";
+import { chakraTheme } from "../../../utils/theme";
+import { useGetListing } from "../../../hooks/useGetListing";
+import { ListCard } from "./../../index";
+import { SNotFound } from "./RealEstateList.styled";
 
 const RealEstateList = () => {
   const { listing } = useGetListing();
-  console.log(listing);
+
+  if (!listing || listing?.length === 0) {
+    return <SNotFound>აღნიშნული მონაცემებით განცხადება არ იძებნება</SNotFound>;
+  }
+
   return (
     <ChakraProvider theme={chakraTheme}>
       <Grid
