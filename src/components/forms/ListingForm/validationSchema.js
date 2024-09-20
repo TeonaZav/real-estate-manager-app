@@ -9,9 +9,13 @@ export const validationSchema = Yup.object().shape({
       return (
         value &&
         (typeof value === "string" ||
-          ["image/jpeg", "image/png", "image/gif", "image/svg+xml"].includes(
-            value.type
-          ))
+          [
+            "image/jpeg",
+            "image/png",
+            "image/gif",
+            "image/svg+xml",
+            "image/webp",
+          ].includes(value.type))
       );
     }),
   region_id: Yup.string().required("სავალდებულო"),

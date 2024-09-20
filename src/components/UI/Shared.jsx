@@ -14,10 +14,7 @@ export const ButtonGroup = styled.div`
 `;
 
 export const Button = styled.button`
-  padding: 1.4rem 1.6rem;
-  border-radius: 1rem;
   width: auto;
-  font-size: 1.6rem;
   font-weight: 500;
   transition: all 0.4s ease-in-out;
   display: flex;
@@ -56,4 +53,17 @@ export const Button = styled.button`
             `}
     `;
   }}
+  ${({ $small }) =>
+    $small
+      ? css`
+          padding: 0.8rem 1.4rem;
+          font-size: 1.4rem;
+          border-radius: 0.8rem;
+          width: fit-content;
+        `
+      : css`
+          padding: 1.4rem 1.6rem;
+          font-size: 1.6rem;
+          border-radius: 1rem;
+        `}
 `;

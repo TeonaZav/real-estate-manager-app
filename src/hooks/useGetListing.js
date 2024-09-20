@@ -7,6 +7,7 @@ export const useGetListing = () => {
     queryFn: fetchListing,
     suspense: true,
   });
-  const listing = data || [];
+
+  const listing = (data || []).sort((a, b) => b.id - a.id);
   return { listing, error };
 };

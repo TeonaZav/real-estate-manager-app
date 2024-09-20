@@ -22,7 +22,11 @@ const Layout = () => {
       <SMain $pathname={location.pathname}>
         <SContainer>
           <AnimatePresence mode="wait">
-            <motion.div key={location.pathname} {...animationConfig}>
+            <motion.div
+              key={location.pathname}
+              {...animationConfig}
+              style={{ width: "100%" }}
+            >
               <Outlet context={{ openModal, closeModal }} />
             </motion.div>
           </AnimatePresence>
