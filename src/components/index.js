@@ -1,4 +1,3 @@
-import Layout from "./layout/Layout";
 import Header from "./layout/Header";
 import RealEstateList from "./listing/RealEstateList/RealEstateList";
 import ListCard from "./listing/ListCard/ListCard";
@@ -12,7 +11,6 @@ import ButtonPanel from "./listingActions/ButtonPanel/ButtonPanel";
 import ActionPanel from "./listingActions/ActionPanel/ActionPanel";
 
 export {
-  Layout,
   RealEstateList,
   ListCard,
   MenuDropdown,
