@@ -6,7 +6,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { Layout, Loader } from "./components";
+import { Loader } from "./components";
+import Layout from "./components/Layout/Layout";
 
 const Home = lazy(() => import("./pages/Home"));
 const AddListing = lazy(() => import("./pages/AddListing"));

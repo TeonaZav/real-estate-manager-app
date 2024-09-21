@@ -20,15 +20,12 @@ export const SMenuButton = styled(Button)`
 export const SMenuList = styled(MenuList)`
   display: flex;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 2.4rem;
   && {
     padding: 2.4rem;
     border-radius: 1rem;
     border: var(--border);
     background: var(--clr-bg-primary);
     box-shadow: 5px 5px 12px 0px rgba(2, 21, 38, 0.08);
-  }
-  button {
-    align-self: flex-end;
   }
 `;

@@ -6,7 +6,7 @@ import {
   ModalBody,
   ChakraProvider,
 } from "@chakra-ui/react";
-import { chakraTheme } from "../../utils/theme";
+import { chakraTheme } from "./../../../utils/theme";
 
 const ModalComponent = ({
   isOpen,

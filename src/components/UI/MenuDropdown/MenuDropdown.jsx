@@ -1,20 +1,14 @@
-import { Menu, MenuButton, MenuItem, ChakraProvider } from "@chakra-ui/react";
-import { chakraTheme } from "../../utils/theme";
-import { ChevronDownIcon, ChevronUpIcon } from "../../assets";
+import React from "react";
+import { Menu, MenuButton, ChakraProvider } from "@chakra-ui/react";
+import { chakraTheme } from "../../../utils/theme";
+import { ChevronDownIcon, ChevronUpIcon } from "../../../assets";
 import { SMenuButton, SMenuList } from "./MenuDropdown.styled";
-import { Button } from "../UI/Shared";
 
-const MenuDropdown = ({
-  label,
-  btnLabel = "არჩევა",
-  children,
-  onClick,
-  ...props
-}) => {
+const MenuDropdown = ({ label, children, ...props }) => {
   return (
     <ChakraProvider theme={chakraTheme}>
       <Menu>
-        {({ isOpen }) => (
+        {({ isOpen, onClose }) => (
           <>
             <MenuButton
               isActive={isOpen}
@@ -25,12 +19,7 @@ const MenuDropdown = ({
               {label}
             </MenuButton>
             <SMenuList {...props}>
-              {children}
-              {onClick && (
-                <Button $small onClick={onClick}>
-                  {btnLabel}
-                </Button>
-              )}
+              {React.cloneElement(children, { onClose })}
             </SMenuList>
           </>
         )}
