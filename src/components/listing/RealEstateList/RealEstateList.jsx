@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
 import { chakraTheme } from "../../../utils/theme";
 import { useFilter } from "../../../context/FilterContext";
@@ -8,13 +8,11 @@ import { SNotFound } from "./RealEstateList.styled";
 
 const RealEstateList = () => {
   const { filteredEstates } = useFilter();
-  const navigate = useNavigate();
-  const location = useLocation();
   const { restoreFiltersFromSession } = useFilter();
 
   useEffect(() => {
     restoreFiltersFromSession();
-  }, [location.search, navigate]);
+  }, []);
 
   if (!filteredEstates || filteredEstates?.length === 0) {
     return <SNotFound>აღნიშნული მონაცემებით განცხადება არ იძებნება</SNotFound>;
