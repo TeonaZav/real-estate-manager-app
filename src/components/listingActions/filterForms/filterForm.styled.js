@@ -118,6 +118,13 @@ export const SInput = styled(Input)`
   }
 `;
 
+export const SBedroomInput = styled(SInput)`
+  max-width: 4.1rem;
+  padding-right: 1rem !important;
+  flex: 1 0 0;
+  text-align: center;
+`;
+
 export const SCheckbox = styled(Checkbox)`
   && {
     display: flex;
