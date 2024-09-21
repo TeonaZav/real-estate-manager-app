@@ -10,6 +10,8 @@ import FilterPanel from "./listingActions/FilterPanel/FilterPanel";
 import ButtonPanel from "./listingActions/ButtonPanel/ButtonPanel";
 import ActionPanel from "./listingActions/ActionPanel/ActionPanel";
 import Carousel from "./Carousel/Carousel";
+import EstateDetail from "./EstateDetails/EstateDetails";
+import AgentDetails from "./AgentDetails/AgentDetails";
 
 export {
   RealEstateList,
@@ -24,4 +26,6 @@ export {
   Header,
   ModalComponent,
   Carousel,
+  EstateDetail,
+  AgentDetails,
 };

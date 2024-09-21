@@ -13,3 +13,14 @@ export const formatPrice = (price) => {
     formatter.replace("GEL", "").trim().replace(",", " ") + " ₾";
   return formattedPrice;
 };
+
+export const formatDate = (isoDateString) => {
+  const date = new Date(isoDateString);
+  const formattedDate = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+
+  return formattedDate;
+};
