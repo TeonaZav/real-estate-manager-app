@@ -7,6 +7,8 @@ import AreaIcon from "./icons/area-icon.svg";
 import PostalIndexIcon from "./icons/postal-icon.svg";
 import ChevronDownIcon from "./icons/chevron-down-icon.svg";
 import ChevronUpIcon from "./icons/chevron-up-icon.svg";
+import IconPrev from "./icons/icon-prev.svg";
+import IconNext from "./icons/icon-next.svg";
 
 export {
   PlusCircleIcon,
@@ -18,4 +20,6 @@ export {
   ChevronDownIcon,
   ChevronUpIcon,
   PlusIcon,
+  IconPrev,
+  IconNext,
 };
