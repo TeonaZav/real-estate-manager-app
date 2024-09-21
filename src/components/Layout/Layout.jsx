@@ -6,33 +6,37 @@ import Header from "../Header/Header";
 import { animationConfig } from "../../utils/animationConfig";
 import { SContainer } from "../../styles/SharedStyles";
 import { SLayout, SMain } from "./Layout.styled";
+import { FilterProvider } from "../../context/FilterContext";
+
 
 const Layout = () => {
   const location = useLocation();
   const { isOpen, modalContent, openModal, closeModal } = useModal();
 
   return (
-    <SLayout>
-      <Header />
-      {isOpen && (
-        <ModalComponent isOpen={isOpen} onClose={closeModal}>
-          {modalContent}
-        </ModalComponent>
-      )}
-      <SMain $pathname={location.pathname}>
-        <SContainer>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              {...animationConfig}
-              style={{ width: "100%" }}
-            >
-              <Outlet context={{ openModal, closeModal }} />
-            </motion.div>
-          </AnimatePresence>
-        </SContainer>
-      </SMain>
-    </SLayout>
+    <FilterProvider>
+      <SLayout>
+        <Header />
+        {isOpen && (
+          <ModalComponent isOpen={isOpen} onClose={closeModal}>
+            {modalContent}
+          </ModalComponent>
+        )}
+        <SMain $pathname={location.pathname}>
+          <SContainer>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                {...animationConfig}
+                style={{ width: "100%" }}
+              >
+                <Outlet context={{ openModal, closeModal }} />
+              </motion.div>
+            </AnimatePresence>
+          </SContainer>
+        </SMain>
+      </SLayout>
+    </FilterProvider>
   );
 };
 
