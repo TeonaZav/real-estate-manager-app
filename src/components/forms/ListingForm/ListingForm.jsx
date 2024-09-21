@@ -6,6 +6,7 @@ import { validationSchema } from "./validationSchema";
 import { useCreateListing } from "../../../hooks/useCreateListing";
 import { useGetAgents } from "../../../hooks/useGetAgents";
 import { useAddressData } from "../../../hooks/useAddressData";
+import { useFilter } from "./../../../context/FilterContext";
 import { DevTool } from "@hookform/devtools";
 import FormActions from "../FormActions/FormActions";
 import {
@@ -39,6 +40,12 @@ const STORAGE_KEY = "listing-form-data";
 const ListingForm = () => {
   const navigate = useNavigate();
 
+  const { clearFilters } = useFilter();
+
+  const handleClearFilters = () => {
+    sessionStorage.removeItem("filterURL");
+    clearFilters();
+  };
   const { createNewListing } = useCreateListing();
 
   const sessionData = getSessionData(STORAGE_KEY);
@@ -66,6 +73,7 @@ const ListingForm = () => {
   const handleReset = () => {
     reset(defaultValues);
     sessionStorage.removeItem(STORAGE_KEY);
+    handleClearFilters();
     navigate("/");
   };
 
