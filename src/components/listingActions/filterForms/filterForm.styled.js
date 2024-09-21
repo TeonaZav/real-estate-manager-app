@@ -130,11 +130,14 @@ export const SCheckbox = styled(Checkbox)`
     display: flex;
     gap: 0.8rem;
     align-items: center;
-
+    svg {
+      width: 1.3rem;
+    }
     .chakra-checkbox__control {
       width: 2rem;
       height: 2rem;
       border: var(--border);
+      border-radius: 0.2rem;
       &&:active {
         outline: none;
         box-shadow: none;
@@ -144,12 +147,12 @@ export const SCheckbox = styled(Checkbox)`
       color: var(--clr-dark);
       font-size: var(--fs-xs);
       font-weight: 400;
-      line-height: normal;
     }
     .chakra-checkbox__control[data-checked] {
       background-color: var(--clr-green);
       outline: none;
       box-shadow: none;
+      border: 1px solid transparent;
     }
   }
 `;
