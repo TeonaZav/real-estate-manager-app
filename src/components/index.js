@@ -1,4 +1,4 @@
-import Header from "./layout/Header";
+import Header from "./Header/Header";
 import RealEstateList from "./listing/RealEstateList/RealEstateList";
 import ListCard from "./listing/ListCard/ListCard";
 import MenuDropdown from "./UI/MenuDropdown/MenuDropdown";

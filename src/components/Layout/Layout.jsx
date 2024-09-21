@@ -2,7 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { FilterProvider } from "../../context/FilterContext";
 import { useModal } from "../../context/ModalContext";
-import { ModalComponent, Header } from "./../index";
+import { ModalComponent, Header } from "../index";
 import { animationConfig } from "../../utils/animationConfig";
 import { SContainer } from "../../styles/SharedStyles";
 import { SLayout, SMain } from "./Layout.styled";

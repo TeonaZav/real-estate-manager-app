@@ -7,7 +7,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import { Loader } from "./components";
-import Layout from "./components/layout/Layout";
+import Layout from "./components/Layout/Layout";
 
 const Home = lazy(() => import("./pages/Home"));
 const AddListing = lazy(() => import("./pages/AddListing"));
