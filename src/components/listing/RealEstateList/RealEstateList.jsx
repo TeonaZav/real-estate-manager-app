@@ -1,13 +1,22 @@
+import { useEffect } from "react";
+import { useLocation, useNavigate} from "react-router-dom";
 import { ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
 import { chakraTheme } from "../../../utils/theme";
-import { useGetListing } from "../../../hooks/useGetListing";
+import { useFilter } from "../../../context/FilterContext";
 import { ListCard } from "./../../index";
 import { SNotFound } from "./RealEstateList.styled";
 
 const RealEstateList = () => {
-  const { listing } = useGetListing();
+  const { filteredEstates } = useFilter();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { restoreFiltersFromSession } = useFilter();
 
-  if (!listing || listing?.length === 0) {
+  useEffect(() => {
+    restoreFiltersFromSession();
+  }, [location.search, navigate]);
+
+  if (!filteredEstates || filteredEstates?.length === 0) {
     return <SNotFound>აღნიშნული მონაცემებით განცხადება არ იძებნება</SNotFound>;
   }
 
@@ -24,7 +33,7 @@ const RealEstateList = () => {
         gap={"2rem"}
         mt={"3.2rem"}
       >
-        {listing.map((item) => (
+        {filteredEstates.map((item) => (
           <GridItem w="100%" p={0} key={item.id}>
             <ListCard {...item} />
           </GridItem>

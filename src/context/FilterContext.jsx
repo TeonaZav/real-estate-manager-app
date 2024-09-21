@@ -6,13 +6,26 @@ import {
   useMemo,
   useCallback,
 } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useGetListing } from "../hooks/useGetListing";
 
 const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  
+  const navigate = useNavigate();
+
+  const saveFiltersToSession = (url) => {
+    sessionStorage.setItem("filterURL", url);
+  };
+
+  const restoreFiltersFromSession = () => {
+    const savedUrl = sessionStorage.getItem("filterURL");
+    if (savedUrl) {
+      navigate(savedUrl, { replace: true });
+    }
+  };
 
   const [selectedRegions, setSelectedRegions] = useState(
     searchParams.getAll("region") || []
@@ -36,7 +49,6 @@ export const FilterProvider = ({ children }) => {
   const { listing: estates } = useGetListing();
   const [filteredEstates, setFilteredEstates] = useState([]);
 
- 
   useEffect(() => {
     const params = {};
     if (selectedRegions.length > 0) params.region = selectedRegions.join(",");
@@ -57,11 +69,9 @@ export const FilterProvider = ({ children }) => {
     setSearchParams,
   ]);
 
- 
   const handleFiltering = useCallback(() => {
     let filtered = [];
 
-  
     if (selectedRegions.length > 0) {
       const regionFiltered = estates.filter((estate) =>
         selectedRegions.includes(String(estate.city.region_id))
@@ -69,7 +79,6 @@ export const FilterProvider = ({ children }) => {
       filtered = [...new Set([...filtered, ...regionFiltered])];
     }
 
-  
     if (selectedMinPrice || selectedMaxPrice) {
       const priceFiltered = estates.filter((estate) => {
         const matchesMinPrice =
@@ -81,7 +90,6 @@ export const FilterProvider = ({ children }) => {
       filtered = [...new Set([...filtered, ...priceFiltered])];
     }
 
-  
     if (selectedMinArea || selectedMaxArea) {
       const areaFiltered = estates.filter((estate) => {
         const matchesMinArea =
@@ -93,7 +101,6 @@ export const FilterProvider = ({ children }) => {
       filtered = [...new Set([...filtered, ...areaFiltered])];
     }
 
-  
     if (selectedBedrooms) {
       const bedroomFiltered = estates.filter(
         (estate) => estate.bedrooms === Number(selectedBedrooms)
@@ -101,7 +108,6 @@ export const FilterProvider = ({ children }) => {
       filtered = [...new Set([...filtered, ...bedroomFiltered])];
     }
 
-   
     if (
       !selectedRegions.length &&
       !selectedMinPrice &&
@@ -124,18 +130,15 @@ export const FilterProvider = ({ children }) => {
     selectedBedrooms,
   ]);
 
-  
   const filteredEstatesMemo = useMemo(
     () => handleFiltering(),
     [handleFiltering]
   );
 
-
   useEffect(() => {
     setFilteredEstates(filteredEstatesMemo);
   }, [filteredEstatesMemo]);
 
-  
   const clearFilters = () => {
     setSelectedRegions([]);
     setSelectedMinPrice("");
@@ -145,7 +148,6 @@ export const FilterProvider = ({ children }) => {
     setSelectedBedrooms("");
     setSearchParams({});
   };
-
 
   const value = useMemo(
     () => ({
@@ -162,7 +164,10 @@ export const FilterProvider = ({ children }) => {
       selectedBedrooms,
       setSelectedBedrooms,
       clearFilters,
-      filteredEstates: filteredEstatesMemo, 
+      saveFiltersToSession,
+      restoreFiltersFromSession,
+      searchParams,
+      filteredEstates: filteredEstatesMemo,
     }),
     [
       selectedRegions,
