@@ -9,6 +9,8 @@ import ChevronDownIcon from "./icons/chevron-down-icon.svg";
 import ChevronUpIcon from "./icons/chevron-up-icon.svg";
 import IconPrev from "./icons/icon-prev.svg";
 import IconNext from "./icons/icon-next.svg";
+import IconEmail from "./icons/icon-email.svg";
+import IconPhone from "./icons/icon-phone.svg";
 
 export {
   PlusCircleIcon,
@@ -22,4 +24,6 @@ export {
   PlusIcon,
   IconPrev,
   IconNext,
+  IconEmail,
+  IconPhone,
 };
