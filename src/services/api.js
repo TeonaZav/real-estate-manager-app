@@ -87,3 +87,17 @@ export const fetchEstate = async (id) => {
     console.error("Failed to fetch real estate", error);
   }
 };
+
+export const deleteEstateFromDb = async (id) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}/real-estates/${id}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Failed to delete real estate", error);
+    throw error;
+  }
+};
