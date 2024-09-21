@@ -1,7 +1,9 @@
-import Layout from "./Layout/Layout";
+import Layout from "./layout/Layout";
+import Header from "./layout/Header";
 import RealEstateList from "./listing/RealEstateList/RealEstateList";
 import ListCard from "./listing/ListCard/ListCard";
 import MenuDropdown from "./UI/MenuDropdown/MenuDropdown";
+import ModalComponent from "./UI/ModalComponent/ModalComponent";
 import AgentForm from "./forms/AgentForm/AgentForm";
 import ListingForm from "./forms/ListingForm/ListingForm";
 import Loader from "./UI/Loader/Loader";
@@ -20,4 +22,6 @@ export {
   FilterPanel,
   ButtonPanel,
   ActionPanel,
+  Header,
+  ModalComponent,
 };
